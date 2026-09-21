@@ -10,13 +10,13 @@ These standards are intended to keep account creation consistent, reduce adminis
 
 Standard user accounts will use the following naming format:
 
-`firstname.lastname@<tenant-domain>`
+`firstname.lastname@ijatoye.onmicrosoft.com`
 
 Example:
 
-`blake.cooper@<tenant-domain>`
+`blake.cooper@ijatoye.onmicrosoft.com`
 
-The final tenant domain will be documented only after the Microsoft 365 tenant is created and validated.
+The validated Microsoft 365 tenant domain for this lab is ijatoye.onmicrosoft.com.
 
 ## Display Name Standard
 
