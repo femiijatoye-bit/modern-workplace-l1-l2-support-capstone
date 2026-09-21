@@ -1,0 +1,6 @@
+UserPrincipalName,DisplayName,FirstName,LastName,Department,JobTitle,ManagerUPN,UsageLocation
+avery.morgan@ijatoye.onmicrosoft.com,Avery Morgan,Avery,Morgan,Executive,Chief Executive Officer,,CA
+jordan.lee@ijatoye.onmicrosoft.com,Jordan Lee,Jordan,Lee,Executive,Chief Operating Officer,avery.morgan@ijatoye.onmicrosoft.com,CA
+taylor.brooks@ijatoye.onmicrosoft.com,Taylor Brooks,Taylor,Brooks,Human Resources,HR Manager,jordan.lee@ijatoye.onmicrosoft.com,CA
+casey.reed@ijatoye.onmicrosoft.com,Casey Reed,Casey,Reed,Human Resources,HR Coordinator,taylor.brooks@ijatoye.onmicrosoft.com,CA
+morgan.patel@ijatoye.onmicrosoft.com,Morgan Patel,Morgan,Patel,Finance,Finance Manager,jordan.lee@ijatoye.onmicrosoft.com,CA
