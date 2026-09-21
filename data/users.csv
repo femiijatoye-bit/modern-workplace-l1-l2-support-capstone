@@ -1,0 +1,26 @@
+EmployeeID,DisplayName,FirstName,LastName,Department,JobTitle,Manager,EmploymentStatus
+NCS001,Avery Morgan,Avery,Morgan,Executive,Chief Executive Officer,,Active
+NCS002,Jordan Lee,Jordan,Lee,Executive,Chief Operating Officer,Avery Morgan,Active
+NCS003,Taylor Brooks,Taylor,Brooks,Human Resources,HR Manager,Jordan Lee,Active
+NCS004,Casey Reed,Casey,Reed,Human Resources,HR Coordinator,Taylor Brooks,Active
+NCS005,Morgan Patel,Morgan,Patel,Finance,Finance Manager,Jordan Lee,Active
+NCS006,Riley Chen,Riley,Chen,Finance,Financial Analyst,Morgan Patel,Active
+NCS007,Jamie Foster,Jamie,Foster,Finance,Accounts Administrator,Morgan Patel,Active
+NCS008,Cameron Wright,Cameron,Wright,Sales,Sales Manager,Jordan Lee,Active
+NCS009,Drew Hall,Drew,Hall,Sales,Account Executive,Cameron Wright,Active
+NCS010,Parker Young,Parker,Young,Sales,Account Executive,Cameron Wright,Active
+NCS011,Reese Allen,Reese,Allen,Sales,Sales Development Representative,Cameron Wright,Active
+NCS012,Quinn Scott,Quinn,Scott,Sales,Sales Coordinator,Cameron Wright,Active
+NCS013,Alexis King,Alexis,King,Marketing,Marketing Manager,Jordan Lee,Active
+NCS014,Rowan Green,Rowan,Green,Marketing,Digital Marketing Specialist,Alexis King,Active
+NCS015,Skyler Adams,Skyler,Adams,Marketing,Content Specialist,Alexis King,Active
+NCS016,Emerson Baker,Emerson,Baker,Marketing,SEO Specialist,Alexis King,Active
+NCS017,Hayden Nelson,Hayden,Nelson,Marketing,Marketing Coordinator,Alexis King,Active
+NCS018,Dakota Carter,Dakota,Carter,Operations,Operations Manager,Jordan Lee,Active
+NCS019,Finley Mitchell,Finley,Mitchell,Operations,Operations Analyst,Dakota Carter,Active
+NCS020,Charlie Perez,Charlie,Perez,Operations,Project Coordinator,Dakota Carter,Active
+NCS021,Robin Turner,Robin,Turner,Operations,Administrative Assistant,Dakota Carter,Active
+NCS022,Sam Rivera,Sam,Rivera,IT,IT Administrator,Jordan Lee,Active
+NCS023,Blake Cooper,Blake,Cooper,IT,IT Support Analyst,Sam Rivera,Active
+NCS024,Harper Evans,Harper,Evans,Creative Services,Creative Lead,Alexis King,Active
+NCS025,Logan Morris,Logan,Morris,Creative Services,Graphic Designer,Harper Evans,Active
