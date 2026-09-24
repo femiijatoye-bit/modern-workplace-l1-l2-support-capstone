@@ -284,7 +284,26 @@ By the end of the lab, the environment demonstrated:
 - Remote endpoint administration
 - Automated PowerShell remediation
 - Documented troubleshooting and validation
-### Target Roles
+
+  ## Selected Evidence
+
+### Endpoint Management
+- [Managed Windows 11 endpoint](evidence/device-management/device-renamed-intune.png)
+- [Device configuration policies succeeded](evidence/device-management/device-configuration-success.png)
+- [Windows 11 compliance settings](evidence/device-management/windows11-baseline-setting-compliance.png)
+- [Managed applications installed](evidence/device-management/managed-apps-inventory.png)
+- [Remote Intune sync completed](evidence/device-management/remote-sync-success.png)
+
+### Proactive Remediation
+- [Print Spooler stopped before remediation](evidence/remediation/print-spooler-stopped-before-remediation.png)
+- [Print Spooler restored successfully](evidence/remediation/print-spooler-remediation-success.png)
+- [Intune remediation action completed](evidence/remediation/intune-remediation-action-complete.png)
+
+### Identity and Security
+- [Identity administration evidence](evidence/identity/)
+- [Security and privileged access evidence](evidence/security/)
+  
+## Target Roles
 This project demonstrates practical experience relevant to:
 - IT Support Technician
 - Help Desk / Service Desk Analyst
