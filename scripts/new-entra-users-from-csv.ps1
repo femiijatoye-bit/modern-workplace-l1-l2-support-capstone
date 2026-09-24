@@ -1,11 +1,12 @@
 # Bulk Entra user provisioning from CSV
 # Requires Microsoft.Graph PowerShell module
 # Expected CSV columns:
-# DisplayName,UserPrincipalName,GivenName,Surname,JobTitle,Department,UsageLocation
+# DisplayName,UserPrincipalName,FirstName,LastName,JobTitle,Department,UsageLocation
+
+$csvPath = Join-Path -Path $PSScriptRoot -ChildPath '../data/entra-bulk-users.csv'
+$users = Import-Csv -LiteralPath $csvPath -ErrorAction Stop
 
 Connect-MgGraph -Scopes "User.ReadWrite.All"
-
-$users = Import-Csv "./data/users-to-provision.csv"
 
 foreach ($user in $users) {
 
@@ -21,8 +22,8 @@ foreach ($user in $users) {
         -DisplayName $user.DisplayName `
         -UserPrincipalName $user.UserPrincipalName `
         -MailNickname ($user.UserPrincipalName.Split("@")[0]) `
-        -GivenName $user.GivenName `
-        -Surname $user.Surname `
+        -GivenName $user.FirstName `
+        -Surname $user.LastName `
         -JobTitle $user.JobTitle `
         -Department $user.Department `
         -UsageLocation $user.UsageLocation `

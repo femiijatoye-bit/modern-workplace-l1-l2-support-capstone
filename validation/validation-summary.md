@@ -21,8 +21,8 @@ This index records what the committed evidence shows. It is a review of saved la
 ## Evidence Boundaries
 
 - The original README records Windows Hello registry validation (`UsePassportForWork = 0`) and successful sign-in after the workaround. No dedicated registry or post-workaround sign-in capture is committed.
-- The original Print Spooler detection/remediation scripts, detection output, startup-type verification, and scheduling configuration are absent. The screenshots do not establish every step independently.
-- The provisioning script references absent `data/users-to-provision.csv` and expects name columns different from the existing provisioning dataset. No tenant-side execution was performed during repository cleanup.
+- The original [detection](../scripts/detect-print-spooler.ps1) and [remediation](../scripts/remediate-print-spooler.ps1) scripts used during the lab are included with their PowerShell logic preserved. All three scripts pass PowerShell syntax parsing; no live execution was performed. Detection output, startup-type verification, and scheduling configuration remain absent. The screenshots do not establish every step independently.
+- The provisioning script now resolves `data/entra-bulk-users.csv` relative to `$PSScriptRoot` and maps `FirstName`/`LastName` to `GivenName`/`Surname`. Validation is offline/static only; no Graph authentication, user creation, or Print Spooler script execution was performed.
 - Earlier endpoint screenshots retain `WIN-8M79HVU6TOU`; later ones use `LAB-WIN11-01`. They document different stages of the lab.
 - Screenshots are historical snapshots. A success result does not establish ongoing compliance or success of every attempted action.
 

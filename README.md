@@ -227,7 +227,7 @@ The remediation package was deployed through Intune and executed remotely agains
 
 Initiated Intune remediation, verified that the service returned to **Running**, and captured a completed Intune device action.
 
-The original remediation scripts are not yet included in the repository. See the [remediation case](docs/print-spooler-remediation.md) for the workflow and saved evidence.
+The supplied original [detection](scripts/detect-print-spooler.ps1) and [remediation](scripts/remediate-print-spooler.ps1) scripts are included. See the [script notes](scripts/README.md) for implementation details. See the [remediation case](docs/print-spooler-remediation.md) for the workflow and saved evidence.
 
 ---
 
