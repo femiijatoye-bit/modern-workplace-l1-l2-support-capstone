@@ -16,6 +16,15 @@ The environment was designed, configured, tested, troubleshot, and documented fr
 
 ---
 
+## Documentation Guide
+
+- [Environment architecture](architecture/environment-architecture.md)
+- [Business scenario](docs/business-scenario.md) and [identity standards](docs/identity-access-standards.md)
+- [Validation summary and evidence boundaries](validation/validation-summary.md)
+- [Windows Hello incident](troubleshooting/windows-hello-provisioning.md) and [bulk-provisioning incident](troubleshooting/bulk-user-provisioning-password-policy.md)
+- [Print Spooler remediation case](docs/print-spooler-remediation.md)
+- [Dataset guide](data/README.md) and [script inventory and limitations](scripts/README.md)
+
 ## Environment
 
 | Component | Technology |
@@ -38,7 +47,7 @@ The environment was designed, configured, tested, troubleshot, and documented fr
 - Microsoft 365 licensing and role assignment
 - Bulk user provisioning with Microsoft Graph / PowerShell
 - Role-based access control and least privilege
-- Emergency / break-glass administrator configuration
+- Emergency administrator sign-in validation
 - Multi-factor authentication
 - Windows 11 enrollment into Microsoft Intune
 - Device groups and targeted policy assignment
@@ -50,7 +59,7 @@ The environment was designed, configured, tested, troubleshot, and documented fr
 - Remote device synchronization and administration
 - Endpoint naming and lifecycle management
 - Per-setting compliance validation
-- PowerShell detection and remediation scripting
+- Print Spooler detection and remediation workflows
 - Intune proactive remediations
 - Troubleshooting and root-cause analysis
 - Technical documentation and evidence collection
@@ -80,13 +89,13 @@ Microsoft 365 licenses, job titles, departments, and administrative roles were a
 
 Implemented identity-security controls including:
 
-- MFA registration and enforcement
+- Conditional Access MFA policy rollout
 - Administrative role assignment
 - Least-privilege access
 - Emergency administrative access
-- Separation between standard users and privileged accounts
+- Documented standards for separating standard and privileged access
 
-Role assignments and authentication behavior were validated through the Microsoft administration portals.
+Validated role assignments through Microsoft Graph and captured successful MFA policy results for the emergency administrator sign-in.
 
 ---
 
@@ -98,7 +107,7 @@ The endpoint was standardized and renamed:
 
 `LAB-WIN11-01`
 
-Successful enrollment, synchronization, user association, and Intune management were validated from both the endpoint and administration console.
+The endpoint was renamed from `WIN-8M79HVU6TOU` to `LAB-WIN11-01`. Saved Intune evidence captures both stages, with Sam Rivera as primary user, Personal ownership, and Compliant status.
 
 ---
 
@@ -129,7 +138,7 @@ Controls included:
 - Microsoft Defender real-time protection
 - Defender behavior monitoring
 
-Successful policy application was validated from the device-centric configuration report.
+Validated successful application of the custom Settings Catalog profile through saved Intune evidence. The separate compliance report also shows real-time protection as **Compliant**.
 
 ---
 
@@ -143,11 +152,7 @@ A lab-specific Intune configuration profile was created:
 
 The policy disabled Windows Hello for Business provisioning for the test endpoint.
 
-Policy application was independently validated through the Windows registry:
-
-`UsePassportForWork = 0`
-
-After the policy applied, Entra sign-in completed successfully.
+Verified policy application through Intune, checked `UsePassportForWork = 0` in the registry, and successfully restored Sam Rivera’s Entra sign-in. Saved Intune screenshots capture the successful policy application. See the [incident record](troubleshooting/windows-hello-provisioning.md) for the troubleshooting steps.
 
 This scenario demonstrates practical troubleshooting involving:
 
@@ -155,7 +160,7 @@ This scenario demonstrates practical troubleshooting involving:
 - Intune policy deployment
 - Windows registry validation
 - Endpoint synchronization
-- Root-cause isolation
+- Provisioning-stage isolation and a lab-specific workaround
 
 ---
 
@@ -187,11 +192,11 @@ Remote administrative actions were performed through Intune, including:
 - Application processing
 - Configuration refresh
 
-A remote sync successfully processed:
+The captured remote sync reports:
 
-- 4 policies
-- 2 applications
-- script status
+- 4 of 4 policies succeeded
+- 2 applications offered
+- Scripts: completed, with no script updates
 
 The endpoint remained compliant and Intune-managed after administrative changes.
 
@@ -203,13 +208,15 @@ A practical support scenario was created around the Windows **Print Spooler** se
 
 The service was intentionally stopped to simulate a common end-user printing issue.
 
-Two PowerShell scripts were created:
+The workflow used two PowerShell scripts:
 
 **Detection script**
+
 - Checks the state of the Print Spooler service
 - Returns a failure condition when the service is stopped
 
 **Remediation script**
+
 - Configures the Print Spooler startup type
 - Starts the service
 - Verifies that the service returns to a running state
@@ -218,31 +225,20 @@ The remediation package was deployed through Intune and executed remotely agains
 
 `LAB-WIN11-01`
 
-The complete workflow was validated:
+Initiated Intune remediation, verified that the service returned to **Running**, and captured a completed Intune device action.
 
-**Stopped → Detected → Remote remediation initiated → Running**
-
-The Intune Device Actions report confirmed the remote remediation action completed successfully.
+The supplied original [detection](scripts/detect-print-spooler.ps1) and [remediation](scripts/remediate-print-spooler.ps1) scripts are included. See the [script notes](scripts/README.md) for implementation details. See the [remediation case](docs/print-spooler-remediation.md) for the workflow and saved evidence.
 
 ---
 
 ## Troubleshooting Highlights
 
-This lab intentionally included troubleshooting rather than only documenting successful configuration.
+Documented support incidents cover:
 
-Examples include:
+- [Bulk user provisioning and password complexity](troubleshooting/bulk-user-provisioning-password-policy.md)
+- [Windows Hello provisioning loop](troubleshooting/windows-hello-provisioning.md)
 
-- Windows Hello for Business provisioning loop
-- MFA authentication behavior
-- Intune policy propagation delays
-- Application installation reporting delays
-- Device synchronization
-- Intune registry-policy validation
-- Application deployment validation
-- Remediation reporting behavior
-- PowerShell script formatting issues between macOS and Windows
-
-Troubleshooting findings are documented in the `/troubleshooting` directory.
+The [Print Spooler case](docs/print-spooler-remediation.md) demonstrates service recovery and remote-action reporting. Together, these records connect symptoms, troubleshooting actions, and validated outcomes.
 
 ---
 
@@ -260,10 +256,11 @@ evidence/
 scripts/
 troubleshooting/
 validation/
-README.md 
-
+README.md
 ```
+
 ## Folder Purpose
+
 - architecture/ — Environment and design documentation
 - data/ — Provisioning datasets and supporting data
 - docs/ — Administrative implementation notes
@@ -271,23 +268,29 @@ README.md
 - scripts/ — PowerShell and Microsoft Graph automation
 - troubleshooting/ — Issues, root causes, and resolutions
 - validation/ — Configuration and outcome validation
-### Key Outcomes
+
+## Key Outcomes
+
 By the end of the lab, the environment demonstrated:
+
 - A functioning Microsoft 365 organization
 - Structured Entra ID identities and departments
 - Microsoft 365 licensing
 - MFA and administrative access controls
 - An enrolled and managed Windows 11 endpoint
 - Custom compliance policies
-- Microsoft Defender configuration enforcement
+- Successful application of the custom Defender configuration profile
 - Centralized application deployment
 - Remote endpoint administration
-- Automated PowerShell remediation
+- A Print Spooler remediation case with service-state and remote-action evidence
 - Documented troubleshooting and validation
 
-  ## Selected Evidence
+## Selected Evidence
+
+Saved screenshots document key lab milestones. See the [validation summary](validation/validation-summary.md) for evidence boundaries and supporting records.
 
 ### Endpoint Management
+
 - [Managed Windows 11 endpoint](evidence/device-management/device-renamed-intune.png)
 - [Device configuration policies succeeded](evidence/device-management/device-configuration-success.png)
 - [Windows 11 compliance settings](evidence/device-management/windows11-baseline-setting-compliance.png)
@@ -295,16 +298,20 @@ By the end of the lab, the environment demonstrated:
 - [Remote Intune sync completed](evidence/device-management/remote-sync-success.png)
 
 ### Proactive Remediation
+
 - [Print Spooler stopped before remediation](evidence/remediation/print-spooler-stopped-before-remediation.png)
 - [Print Spooler restored successfully](evidence/remediation/print-spooler-remediation-success.png)
 - [Intune remediation action completed](evidence/remediation/intune-remediation-action-complete.png)
 
 ### Identity and Security
+
 - [Identity administration evidence](evidence/identity/)
 - [Security and privileged access evidence](evidence/security/)
-  
+
 ## Target Roles
+
 This project demonstrates practical experience relevant to:
+
 - IT Support Technician
 - Help Desk / Service Desk Analyst
 - Desktop Support Technician
@@ -314,7 +321,8 @@ This project demonstrates practical experience relevant to:
 - Modern Workplace / Endpoint Support
 - SOC / Security Operations roles requiring endpoint administration knowledge
 
-  
 ## Author
+
 ### Femi Ijatoye
+
 CompTIA Security+ certified IT support professional with hands-on experience across Microsoft 365, Entra ID, Intune, Windows, macOS, Linux, networking, endpoint security, troubleshooting, and technical support.
