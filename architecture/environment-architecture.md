@@ -61,4 +61,4 @@ The profile named “Windows 11 Security Baseline Configuration” is documented
 
 [Remote synchronization](../evidence/device-management/remote-sync-success.png) records four successful policies, two applications offered, and no script updates. The [Print Spooler case](../docs/print-spooler-remediation.md) connects stopped/running service evidence with an Intune remediation action.
 
-The repository contains a [Graph provisioning script](../scripts/new-entra-users-from-csv.ps1), but its input path and name-column schema need correction before reuse. Original Print Spooler scripts are not committed. See [script limitations](../scripts/README.md).
+The repository includes a [Graph provisioning script](../scripts/new-entra-users-from-csv.ps1) that imports `data/entra-bulk-users.csv` relative to `$PSScriptRoot` and maps `FirstName`/`LastName` to `GivenName`/`Surname`. The Print Spooler detection and remediation scripts are also included. Repository validation was syntax/static only; see [script limitations](../scripts/README.md).

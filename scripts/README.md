@@ -14,19 +14,21 @@ The script requires Microsoft Graph PowerShell commands and an authenticated ide
 - It creates user objects; it does not assign licenses, department groups, or managers.
 - The path/schema correction has not been tested against a live tenant.
 
-## Original Print Spooler Scripts
+## Print Spooler Detection and Remediation
 
-The following scripts were used during the Print Spooler remediation lab and are included with their original PowerShell logic preserved:
+These scripts were developed and iteratively refined as part of the lab to support the stopped-service detection and remediation scenario. They were later prepared for repository inclusion through formatting corrections and syntax/static review. That repository review did not rerun the scripts against an endpoint.
 
-| Script | Behavior visible in the source |
+| Script | Behavior |
 |---|---|
-| [detect-print-spooler.ps1](detect-print-spooler.ps1) | Queries Spooler; exits 0 if Running, otherwise exits 1, including when the service is not found |
-| [remediate-print-spooler.ps1](remediate-print-spooler.ps1) | Checks service presence, requests Automatic startup, starts the service, checks Running status, and contains success/failure exit paths and a catch block |
+| [detect-print-spooler.ps1](detect-print-spooler.ps1) | Checks Spooler; exits 0 when Running and 1 when stopped or not found |
+| [remediate-print-spooler.ps1](remediate-print-spooler.ps1) | Checks service presence, requests Automatic startup, starts Spooler, and checks whether it is Running |
 
-### Implementation and Validation Notes
+### Validation and Limitations
 
-All three scripts pass PowerShell syntax parsing. This confirms syntax validity, not live execution results.
+During the previous repository cleanup, all three PowerShell scripts passed syntax parsing. This established syntax validity, not live execution success. No Microsoft Graph authentication, user creation, or local Print Spooler execution occurred during that validation.
 
-`Set-Service` and `Start-Service` also lack explicit `-ErrorAction Stop`; the catch block is not guaranteed to handle non-terminating errors. This existing logic is preserved.
+`Set-Service` and `Start-Service` do not specify `-ErrorAction Stop`, so the catch block is not guaranteed to handle non-terminating errors.
 
-All three files received syntax/static inspection only. Neither Print Spooler script was executed, and no service settings were changed. See the [validation summary](../validation/validation-summary.md) for saved-evidence boundaries.
+The saved lab evidence shows stopped/running service states and a completed Intune remediation action. It does not independently show detection output, confirm the configured startup type, establish the execution identity or schedule, or link a specific Intune action ID to the terminal output.
+
+See the [remediation case](../docs/print-spooler-remediation.md) and [validation summary](../validation/validation-summary.md).

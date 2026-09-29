@@ -1,6 +1,6 @@
 # Modern Workplace L1/L2 Support Capstone
 
-Hands-on Modern Workplace support lab simulating L1/L2 administration across Microsoft Entra ID, Microsoft 365, Microsoft Intune, Windows 11 endpoints, identity lifecycle management, endpoint security, application deployment, troubleshooting, and proactive remediation.
+Hands-on L1/L2 Microsoft support lab covering Microsoft 365, Entra ID, Intune, a Windows 11 endpoint, PowerShell / Microsoft Graph, identity administration, endpoint security, application deployment, troubleshooting, and remediation.
 
 ---
 
@@ -12,7 +12,7 @@ Rather than demonstrating isolated features, the lab follows an endpoint through
 
 **User provisioning → licensing → identity security → device enrollment → compliance → configuration → application deployment → troubleshooting → remote administration → proactive remediation**
 
-The environment was designed, configured, tested, troubleshot, and documented from scratch.
+The lab documents implemented identity-administration and endpoint-support workflows, with saved evidence and validation notes.
 
 ---
 
@@ -57,7 +57,7 @@ The environment was designed, configured, tested, troubleshot, and documented fr
 - Microsoft Store application deployment through Intune
 - Required application assignment and installation monitoring
 - Remote device synchronization and administration
-- Endpoint naming and lifecycle management
+- Endpoint enrollment, naming, and support
 - Per-setting compliance validation
 - Print Spooler detection and remediation workflows
 - Intune proactive remediations
@@ -227,7 +227,7 @@ The remediation package was deployed through Intune and executed remotely agains
 
 Initiated Intune remediation, verified that the service returned to **Running**, and captured a completed Intune device action.
 
-The supplied original [detection](scripts/detect-print-spooler.ps1) and [remediation](scripts/remediate-print-spooler.ps1) scripts are included. See the [script notes](scripts/README.md) for implementation details. See the [remediation case](docs/print-spooler-remediation.md) for the workflow and saved evidence.
+The [detection](scripts/detect-print-spooler.ps1) and [remediation](scripts/remediate-print-spooler.ps1) scripts used in the lab are included. See the [script notes](scripts/README.md) for implementation details. See the [remediation case](docs/print-spooler-remediation.md) for the workflow and saved evidence.
 
 ---
 
@@ -319,10 +319,9 @@ This project demonstrates practical experience relevant to:
 - Microsoft 365 Support
 - Junior Systems Administrator
 - Modern Workplace / Endpoint Support
-- SOC / Security Operations roles requiring endpoint administration knowledge
 
 ## Author
 
 ### Femi Ijatoye
 
-CompTIA Security+ certified IT support professional with hands-on experience across Microsoft 365, Entra ID, Intune, Windows, macOS, Linux, networking, endpoint security, troubleshooting, and technical support.
+CompTIA Security+ certified IT support professional focused on Microsoft 365, Entra ID, Intune, Windows 11, PowerShell, endpoint support, and troubleshooting.
