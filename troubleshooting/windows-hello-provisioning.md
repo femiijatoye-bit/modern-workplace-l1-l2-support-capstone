@@ -18,6 +18,10 @@ The original account records endpoint synchronization, registry validation of `U
 
 The registry value and successful post-workaround sign-in are documented observations from the original README. Dedicated screenshots or exported logs for those checks are not committed.
 
+## Production Context
+
+In production, investigate the failed provisioning dependency and underlying cause before changing policy broadly. Review device registration, applicable policy, provisioning prerequisites, and diagnostic logs, then implement a supported Windows Hello for Business design appropriate to the environment. Disabling provisioning here was a lab-specific workaround, not a recommended organization-wide fix. This lab did not implement or validate a production Windows Hello for Business architecture.
+
 ## Support Takeaways
 
 Separate the symptom, workaround, and confirmed root cause. Record policy application independently from the user-visible outcome, and explain device renames so historical evidence remains understandable.

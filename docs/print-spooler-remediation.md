@@ -4,11 +4,11 @@
 
 The lab intentionally stopped the Windows Print Spooler service to simulate a printing support incident on `LAB-WIN11-01`. The original README describes an Intune detection/remediation package used to restore the service.
 
-## Recorded Script Intent
+## Script Behavior and Validation
 
-The original lab narrative describes a detection script that checks the service state and reports a failure condition when stopped, and a remediation script that configures startup type, starts the service, and checks for a running state.
+The committed [detection script](../scripts/detect-print-spooler.ps1) checks Spooler and exits 0 when Running or 1 otherwise. The [remediation script](../scripts/remediate-print-spooler.ps1) requests Automatic startup, starts the service, and checks for Running status.
 
-The original `.ps1` files are not committed. Their exact code, exit codes, configured startup type, execution identity, PowerShell bitness, assignments, and schedule cannot be verified from the repository. No replacement scripts have been created.
+The source permits review of the code, exit paths, and requested startup type. Repository validation was syntax/static only; it did not execute these scripts. The saved evidence does not independently confirm the applied startup type, execution identity, PowerShell bitness, assignments, or schedule. See [script limitations](../scripts/README.md).
 
 ## Evidence Sequence
 
@@ -22,6 +22,6 @@ Taken with the original lab narrative, these captures support the remediation ca
 
 ## Documentation Status
 
-The stopped/running evidence and remote action capture are preserved. Reproducible script review remains dependent on recovering the actual lab scripts. A scheduled proactive-remediation configuration is not shown in the saved screenshots.
+The stopped/running evidence and remote action capture are preserved. The committed scripts are available for source review; live retesting was outside the repository cleanup. A scheduled proactive-remediation configuration is not shown in the saved screenshots.
 
 See [script status](../scripts/README.md) and the [validation summary](../validation/validation-summary.md).

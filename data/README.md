@@ -13,6 +13,6 @@ The roster includes Blake Cooper; the provisioning-oriented dataset does not. Th
 
 ## Script Compatibility
 
-The [provisioning script](../scripts/new-entra-users-from-csv.ps1) references `data/users-to-provision.csv`, which is absent. It also reads `GivenName` and `Surname`, while the provisioning dataset uses `FirstName` and `LastName`. The employee roster does not provide the script's required UPN and usage-location fields.
+The [provisioning script](../scripts/new-entra-users-from-csv.ps1) imports `entra-bulk-users.csv` using a path relative to `$PSScriptRoot`. It maps `FirstName` to `GivenName` and `LastName` to `Surname`.
 
-Neither CSV is a drop-in input for the unmodified script. No CSV or script corrections are included in this documentation cleanup. See [script limitations](../scripts/README.md).
+`users.csv` remains the employee roster and is not the provisioning input; it lacks the required UPN and usage-location fields. The path/schema correction received offline/static validation only and has not been tested against a live tenant. Neither CSV was changed. See [script limitations](../scripts/README.md).
